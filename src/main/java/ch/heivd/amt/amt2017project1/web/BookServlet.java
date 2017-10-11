@@ -31,7 +31,7 @@ public class BookServlet extends HttpServlet implements Serializable {
             throws ServletException, IOException {
         Book book = manager.createBook("ISBN1", "First book", "Ali Miladi", "Action", 400);
         request.setAttribute("book", book);
-        request.getRequestDispatcher("/WEB-INF/pages/MyJSP.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/book.jsp").forward(request, response);
     }
 
     @Override

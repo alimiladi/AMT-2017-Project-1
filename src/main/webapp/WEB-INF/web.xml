@@ -8,17 +8,9 @@
         <servlet-name>BookServlet</servlet-name>
         <servlet-class>ch.heivd.amt.amt2017project1.web.BookServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>Servlet1</servlet-name>
-        <servlet-class>ch.heivd.amt.amt2017project1.web.Servlet1</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>BookServlet</servlet-name>
         <url-pattern>/book</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Servlet1</servlet-name>
-        <url-pattern>/books</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

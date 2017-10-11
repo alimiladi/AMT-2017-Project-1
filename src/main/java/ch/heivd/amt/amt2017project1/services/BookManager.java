@@ -18,7 +18,7 @@ import javax.ejb.Stateless;
 public class BookManager implements BookManagerLocal {
     
     @EJB
-    private InMemoryLibrary library;
+    private InMemoryLibraryLocal library;
 
     @Override
     public Book createBook(String isbn, String name, String author, String theme, int nbPages) {
