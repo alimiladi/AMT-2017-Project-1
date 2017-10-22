@@ -11,8 +11,9 @@
 <head>
 
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="${pageContext.request.contextPath}/">
 
 	<title>Books App</title>
 
@@ -29,11 +30,11 @@
 
 			<div class="header-limiter">
 
-                            <h1><a href="#">Books<span>App</span></a></h1>
+                            <h1><a href="home">Books<span>App</span></a></h1>
 				<nav>
-					<a href="#">Create</a>
-					<a href="#">Delete</a>
-					<a href="#">Edit</a>
+					<a href="create">Create</a>
+					<a href="delete">Delete</a>
+					<a href="update">Edit</a>
 					<a href="#">Get a list of books</a>
 				</nav>
 			</div>
