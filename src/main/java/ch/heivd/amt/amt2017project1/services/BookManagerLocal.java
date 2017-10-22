@@ -20,4 +20,6 @@ public interface BookManagerLocal {
     public void setName(String isbn, String name);
     public void setAuthor(String isbn, String author);
     public ArrayList<Book> getRandomListOfNBooks(Long n);
+    public ArrayList<Book> getAllBooks();
+    public void updateBook(String isbn, String name, String author, String theme, int nbPages);
 }
