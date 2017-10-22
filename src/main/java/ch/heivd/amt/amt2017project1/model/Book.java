@@ -24,7 +24,7 @@ public class Book {
         this.nbPages = nbPages;
     }
     
-    public String getISBN(){
+    public String getIsbn(){
         return isbn;
     }
     public String getName(){
