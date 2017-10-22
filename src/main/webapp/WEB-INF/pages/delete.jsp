@@ -18,8 +18,8 @@
     </head>
     <body>
         <div align="center">
-            <form method="post" action="delete" id="create-book-form">
-                <input type="text" name="delIsbn" placeholder="isbn"><br/>
+            <form method="post" action="delete?isbn=${isbn}" id="create-book-form">
+                <label>Are you sure you want to delete the book having isbn : ${isbn} ?</label><br/>
                 <input type="submit" value="delete"> 
             </form>
     </body>

@@ -19,7 +19,7 @@
     <body>
         <div align="center">
             <form method="post" action="update" id="create-book-form">
-                <input type="text" placeholder="ISBN" name="isbn" required><br/>
+                <label> ${isbn} </label><br/>
                 <input type="text" placeholder="name" name="name" required><br/>
                 <input type="text" placeholder="author" name="author" required><br/>
                 <input type="text" placeholder="theme" name="theme" required><br/>

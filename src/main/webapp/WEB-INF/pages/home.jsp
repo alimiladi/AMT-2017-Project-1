@@ -10,3 +10,13 @@
 
 <%@include file="includes/header.jsp" %>
 
+<!DOCTYPE html">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html">
+        <title>Books home</title>
+    </head>
+    <body>        
+    </body>
+</html>
+

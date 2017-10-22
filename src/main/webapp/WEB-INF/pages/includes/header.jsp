@@ -33,9 +33,8 @@
                             <h1><a href="home">Books<span>App</span></a></h1>
 				<nav>
 					<a href="create">Create</a>
-					<a href="delete">Delete</a>
-					<a href="update">Edit</a>
-					<a href="#">Get a list of books</a>
+					<a href="manage">Manage books</a>
+					<a href="#">Configuration</a>
 				</nav>
 			</div>
 
