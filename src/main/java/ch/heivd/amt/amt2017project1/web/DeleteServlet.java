@@ -5,10 +5,11 @@
  */
 package ch.heivd.amt.amt2017project1.web;
 
+import ch.heivd.amt.amt2017project1.services.BookManagerLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,16 +18,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ali Miladi
  */
-@WebServlet(name = "HomeServlet", urlPatterns = {"/home"})
-public class HomeServlet extends HttpServlet {
+public class DeleteServlet extends HttpServlet {
+    
+    @EJB
+    BookManagerLocal bm;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String path = request.getContextPath();
-        request.setAttribute("path", path);
-        request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/pages/delete.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String isbn = request.getParameter("delIsbn");
+        bm.deleteBook(isbn);
+        request.getRequestDispatcher("WEB-INF/pages/home.jsp").forward(request, response);
     }
 
 }

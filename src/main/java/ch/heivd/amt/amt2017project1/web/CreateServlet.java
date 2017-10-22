@@ -5,41 +5,43 @@
  */
 package ch.heivd.amt.amt2017project1.web;
 
-import ch.heivd.amt.amt2017project1.model.Book;
-import ch.heivd.amt.amt2017project1.services.BookManager;
 import ch.heivd.amt.amt2017project1.services.BookManagerLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Serializable;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 /**
  *
  * @author Ali Miladi
  */
-public class BookServlet extends HttpServlet implements Serializable {
-
+public class CreateServlet extends HttpServlet {
+    
     @EJB
-    private BookManagerLocal manager;
-        
+    BookManagerLocal bm;
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("books", manager.getAllBooks());
-        request.getRequestDispatcher("/WEB-INF/pages/book.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/pages/create.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {}
+        PrintWriter out = response.getWriter();
+        String isbn = request.getParameter("isbn");
+        String name = request.getParameter("name");
+        String author = request.getParameter("author");
+        String theme = request.getParameter("theme");
+        int nbPages = Integer.parseInt(request.getParameter("nbPages"));
+        bm.createBook(isbn, name, author, theme, nbPages);
+        request.getRequestDispatcher("WEB-INF/pages/home.jsp").forward(request, response);
     }
+
 }
-
-
-
