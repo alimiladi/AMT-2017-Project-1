@@ -28,6 +28,8 @@ public class UpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String isbn = (String) request.getParameter("isbn");
+        request.setAttribute("isbn", isbn);
         request.getRequestDispatcher("WEB-INF/pages/update-form.jsp").forward(request, response);
     }
 

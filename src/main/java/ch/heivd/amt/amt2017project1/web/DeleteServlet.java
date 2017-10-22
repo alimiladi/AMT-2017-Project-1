@@ -26,13 +26,14 @@ public class DeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setAttribute("isbn", request.getParameter("isbn"));
         request.getRequestDispatcher("WEB-INF/pages/delete.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String isbn = request.getParameter("delIsbn");
+        String isbn = request.getParameter("isbn");
         bm.deleteBook(isbn);
         request.getRequestDispatcher("WEB-INF/pages/home.jsp").forward(request, response);
     }
