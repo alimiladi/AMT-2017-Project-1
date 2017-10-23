@@ -23,6 +23,14 @@ public class Book {
         this.theme = theme;
         this.nbPages = nbPages;
     }
+
+    public Book() {
+        isbn = "";
+        author = "";
+        name = "";
+        theme = "";
+        nbPages = 0;
+    }
     
     public String getIsbn(){
         return isbn;
