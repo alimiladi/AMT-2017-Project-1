@@ -15,11 +15,16 @@ import javax.ejb.Local;
  */
 @Local
 public interface BookManagerLocal {
-    public Book createBook(String isbn, String name, String author, String theme, int nbPages);
+
+    public Book insertBook(String isbn, String name, String author, String theme, int nbPages);
+
+    public Book insertBook(Book book);
+
     public void deleteBook(String isbn);
-    public void setName(String isbn, String name);
-    public void setAuthor(String isbn, String author);
-    public ArrayList<Book> getRandomListOfNBooks(Long n);
-    public ArrayList<Book> getAllBooks();
+
     public void updateBook(String isbn, String name, String author, String theme, int nbPages);
+
+    public ArrayList<Book> getAllBooks();
+    
+    public Book getRandomBook();
 }

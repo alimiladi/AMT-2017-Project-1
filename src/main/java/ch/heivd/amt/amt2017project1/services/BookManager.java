@@ -6,6 +6,7 @@
 package ch.heivd.amt.amt2017project1.services;
 
 import ch.heivd.amt.amt2017project1.model.Book;
+import ch.heivd.amt.amt2017project1.util.RandomBookGeneratorLocal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,12 +28,14 @@ public class BookManager implements BookManagerLocal {
 
     @Resource(lookup = "jdbc/books")
     private DataSource dataSource;
+    
+    @EJB
+    private RandomBookGeneratorLocal gen;
 
     @Override
-    public Book createBook(String isbn, String name, String author, String theme, int nbPages) {
-        Connection cn;
+    public Book insertBook(String isbn, String name, String author, String theme, int nbPages) {
         try {
-            cn = dataSource.getConnection();
+            Connection cn = dataSource.getConnection();
             String query = "INSERT INTO book"
                     + "(isbn, name, author, theme, nbPages) "
                     + "VALUES "
@@ -47,6 +50,7 @@ public class BookManager implements BookManagerLocal {
             //System.out.println(query);
 
             int row = ps.executeUpdate(query);
+            cn.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,30 +87,6 @@ public class BookManager implements BookManagerLocal {
             Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return exist;
-    }
-
-    @Override
-    public void setName(String isbn, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setAuthor(String isbn, String author) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<Book> getRandomListOfNBooks(Long n) {
-//        ArrayList<Book> booksInLibrary = library.loadAllBooks();
-//        if (booksInLibrary.size() < n) {
-//            return booksInLibrary;
-//        }
-//        ArrayList<Book> randomBooks = new ArrayList<Book>();
-//        for (int i = 0; i < n; i++) {
-//            randomBooks.add(booksInLibrary.get((int) Math.abs(Math.random())));
-//        }
-//        return randomBooks;
-        throw new UnsupportedOperationException("Not implemented yet");
     }
 
     @Override
@@ -147,6 +127,7 @@ public class BookManager implements BookManagerLocal {
                 System.out.println(query);
 
                 int row = ps.executeUpdate(query);
+                conn.close();
 
             } catch (SQLException ex) {
                 Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -154,6 +135,21 @@ public class BookManager implements BookManagerLocal {
         } else {
             Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, "No such isbn");
         }
+    }
+
+    @Override
+    public Book insertBook(Book book) {
+        return insertBook(book.getIsbn(),
+                book.getName(), 
+                book.getAuthor(), 
+                book.getTheme(),
+                book.getNbPages());
+    }
+
+    @Override
+    public Book getRandomBook() {
+        return new Book(gen.randomIsbn(), gen.randomName(), gen.randomAuthor(), 
+                gen.randomTheme(), gen.randomNbPages());
     }
 
 }

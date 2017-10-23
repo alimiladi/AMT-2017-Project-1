@@ -41,7 +41,7 @@ public class ManageBooksServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 
-        int maxEntriesPerPage = 3;
+        int maxEntriesPerPage = 12;
         int page = 1;
 
         String pageNumberValue = request.getParameter("pageNumber");

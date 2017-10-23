@@ -40,7 +40,7 @@ public class CreateServlet extends HttpServlet {
         String author = request.getParameter("author");
         String theme = request.getParameter("theme");
         int nbPages = Integer.parseInt(request.getParameter("nbPages"));
-        bm.createBook(isbn, name, author, theme, nbPages);
+        bm.insertBook(isbn, name, author, theme, nbPages);
         request.getRequestDispatcher("WEB-INF/pages/home.jsp").forward(request, response);
     }
 
