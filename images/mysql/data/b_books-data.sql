@@ -10,8 +10,8 @@ USE books_db;
 
 SET AUTOCOMMIT=0;
 INSERT INTO book VALUES 
-(1,'ABCD','GUINESS','action', 'CHASE', 210),
-(2,'EFGH','DAVIS','advanture', 'JOHANSSON', 223),
-(3,'IJKL','CAGE','science-fiction', 'BLOOM', 328),
-(4,'MNOP','DAVIS','horror', 'MARKS', 430);
+(1,'7976c9f2-e5a','The black fog','action', 'Simone de Beauvoir', 210),
+(2,'4539265a-5db','Forgive and Forget','adventure', 'Michael Chabon', 223),
+(3,'bd400469-cf1','Smoke','science-fiction', 'Alan Garner', 328),
+(4,'e43b2b41-97e','Broken','horror', 'Martin Gilbert', 430);
 COMMIT;
