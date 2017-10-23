@@ -8,38 +8,42 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+    <head>
 
-	<meta charset="utf-8">
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <base href="${pageContext.request.contextPath}/">
 
-	<title>Books App</title>
+        <title>Books App</title>
 
-	<link rel="stylesheet" href="static/css/demo.css">
-	<link rel="stylesheet" href="static/css/header-basic.css">
-	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="static/css/demo.css">
+        <link rel="stylesheet" href="static/css/header-basic.css">
+        <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+        <link rel="stylesheet" href="static/css/style.css">
 
 
-</head>
+    </head>
 
-	<body>
+    <body>
 
-		<header class="header-basic">
+        <header class="header-basic">
 
-			<div class="header-limiter">
+            <div class="header-limiter">
 
-                            <h1><a href="home">Books<span>App</span></a></h1>
-				<nav>
-					<a href="create">Create</a>
-					<a href="manage">Manage books</a>
-					<a href="#">Configuration</a>
-				</nav>
-			</div>
+                <h1><a href="home">Books<span>App</span></a></h1>
+                <nav>
+                    <a href="create">Create</a>
+                    <a href="manage">Manage books</a>
+                    <a href="config">Configuration</a>
+                </nav>
+            </div>
 
-		</header>
+        </header>
 
-	</body>
+    </body>
 
 </html>

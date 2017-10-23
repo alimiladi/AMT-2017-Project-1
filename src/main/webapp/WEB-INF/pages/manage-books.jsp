@@ -16,65 +16,88 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html">
         <title>Pagination In Servlets - www.javaworkspace.com</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+        <link rel="stylesheet" href="static/css/style1.css">
     </head>
     <body>
 
-        <h1>Pagination In Servlets</h1>
-
         <%
             List<Book> list = (List) session.getAttribute("bookDetails");
-        %>
 
-        <%
             List<Integer> pageNumbers = (List) session.getAttribute("pages");
             Integer currentPageNo = (Integer) session.getAttribute("curPageNo");
+
+            Integer nextPage = currentPageNo + 1;
+            Integer previousPage = currentPageNo - 1;
+            if (previousPage == 0) {
+                previousPage = 1;
+            }
+            if (nextPage == pageNumbers.size() + 1) {
+                nextPage = pageNumbers.size();
+            }
         %>
 
-        <table border="1">
-            <tr bgcolor="orange">
-                <td><strong>Book isbn</strong></td>
-                <td><strong>Book name</strong></td>
-                <td><strong>Book author</strong></td>
-                <td><strong>Book theme</strong></td>
-                <td><strong>Book nbPages</strong></td>
-            </tr>
-            <%
-                for (int i = 0; i < list.size(); i++) {
-            %>
-            <tr>
-                <%
-                    Book book = (Book) list.get(i);
-                    out.println("<td>" + book.getIsbn() + "</td>");
-                    out.println("<td>" + book.getName() + "</td>");
-                    out.println("<td>" + book.getAuthor() + "</td>");
-                    out.println("<td>" + book.getTheme() + "</td>");
-                    out.println("<td>" + book.getNbPages() + "</td>");
-                %>
-                <td><a href="update?isbn=<%=book.getIsbn()%>">edit</a></td>
-                <td><a href="delete?isbn=<%=book.getIsbn()%>">delete</a></td>
-            </tr>
-            <%
-                }
-            %>
+        <h1>
+            Books
+        </h1>
 
-            <tr>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        ISBN
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        author
+                    </th>
+                    <th>
+                        theme
+                    </th>
+                    <th>
+                        # Pages
+                    </th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th colspan='3'>
+                        Page <%=currentPageNo%>/<%=pageNumbers.size()%>
+                    </th>
+                    <th colspan='4'>
+                        <a href="manage?pageNumber=<%=1%>">&#171;</a>  <a href="manage?pageNumber=<%=previousPage%>">&#60;</a>  <a href="manage?pageNumber=<%=nextPage%>">&#62;</a>   <a href="manage?pageNumber=<%=pageNumbers.size()%>">&#187;</a>
+                    </th>
+                </tr>
+            </tfoot>
+            <tbody>
                 <%
-                    Integer nextPage = currentPageNo + 1;
-                    Integer previousPage = currentPageNo - 1;
-                    if (previousPage == 0) {
-                        previousPage = 1;
-                    }
-                    if (nextPage == pageNumbers.size() + 1) {
-                        nextPage = pageNumbers.size();
+                    for (int i = 0; i < list.size(); i++) {
+                %>
+                <tr>
+                    <%
+                        Book book = (Book) list.get(i);
+                        out.println("<td data-title='Provider Name'>" + book.getIsbn() + "</td>");
+                        out.println("<td data-title='E-mail'>" + book.getName() + "</td>");
+                        out.println("<td data-title='E-mail'>" + book.getAuthor() + "</td>");
+                        out.println("<td data-title='E-mail'>" + book.getTheme() + "</td>");
+                        out.println("<td data-title='E-mail'>" + book.getNbPages() + "</td>");
+                    %>
+                    <td class='select'><a class='button' href="update?isbn=<%=book.getIsbn()%>">edit</a></td>
+                    <td class='select'><a class='button' href="delete?isbn=<%=book.getIsbn()%>">delete</a></td>
+                </tr>
+                <%
                     }
                 %>
-                <td>page <%=currentPageNo%>/<%=pageNumbers.size()%></td>
-                <td><a href="manage?pageNumber=<%=1%>">first</a></td>
-                <td><a href="manage?pageNumber=<%=previousPage%>">previous</a></td>
-                <td><a href="manage?pageNumber=<%=nextPage%>">next</a></td>
-                <td><a href="manage?pageNumber=<%=pageNumbers.size()%>">last</a></td>
 
-            </tr>
+            </tbody>
         </table>
-    </body>
+    </main>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="static/js/index.js"></script>
+</body>
 </html>

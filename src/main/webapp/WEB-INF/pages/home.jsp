@@ -16,7 +16,12 @@
         <meta http-equiv="Content-Type" content="text/html">
         <title>Books home</title>
     </head>
-    <body>        
+    <body> 
+        <div >
+            <h1 class="titleWelcome">Book manager interface</h1>
+        </div>
+        <div class="home">
+        </div>
     </body>
 </html>
 
