@@ -7,6 +7,7 @@ MAINTAINER Olivier Liechti <olivier.liechti@heig-vd.ch>
 
 
 ADD drivers/mysql-connector-java-5.1.44-bin.jar /glassfish4/glassfish/lib/
+ADD autodeploy/AMT2017Project1-1.0-SNAPSHOT.war /glassfish4/glassfish/domains/domain1/autodeploy
 
 RUN echo "AS_ADMIN_PASSWORD=glassfish" > /tmp/gfpw.txt && \
 	./glassfish4/glassfish/bin/asadmin start-domain domain1 && \
