@@ -19,7 +19,7 @@ You should have a docker machine intalled on your computer for the setup of this
 To deploy the application, you just have to 
 1. First you have to place yourself in the `topology` directory. 
 2. You have to run `docker-compose up --build`
-3. Open your browser and type `192.168.99.100:4848/AMT2017Project1-1.0-SNAPSHOT`
+3. Open your browser and type `192.168.99.100:8080/AMT2017Project1-1.0-SNAPSHOT`
 You can then start to use the application.
 
 ## Usage
